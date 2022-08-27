@@ -10,8 +10,12 @@ mongoose.connect(url, () => {
 });
 
 //middelwares
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 //routes
+const userRouter = require("./routes/user_routes");
+app.use("/api/users", userRouter);
 
 app.get("/", (req, res) => {
   res.send("Welcome to Book Store Project");
