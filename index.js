@@ -13,6 +13,7 @@ mongoose.connect(url, () => {
 //middelwares
 
 //routes
+app.use(express.static(__dirname+"/images"));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use('/books',bookRouter);
