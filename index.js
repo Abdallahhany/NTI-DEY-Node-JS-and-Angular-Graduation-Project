@@ -1,5 +1,6 @@
 const express = require("express");
 const { default: mongoose } = require("mongoose");
+const cors = require("cors");
 require("dotenv").config();
 const app = express();
 
@@ -10,6 +11,7 @@ mongoose.connect(url, () => {
 });
 
 //middelwares
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

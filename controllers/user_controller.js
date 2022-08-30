@@ -27,16 +27,19 @@ class User {
   };
   static registerUser = async (req, res) => {
     try {
-      const { username, email, password } = req.body;
+      const { userName, email, password } = req.body;
 
       const checkUser = await UserModel.findOne({ email });
 
       if (checkUser) {
-        return res.send("User with That Email Already Exists");
+        return res.send({
+          success: false,
+          msg: "User with That Email Already Exists",
+        });
       }
 
       const user = await UserModel.create({
-        username,
+        userName,
         email,
         password,
       });
@@ -47,10 +50,10 @@ class User {
   };
   static loginUser = async (req, res) => {
     try {
-      const { username, password } = req.body;
-      if (!username || !password)
+      const { username: userName, password } = req.body;
+      if (!userName || !password)
         return res.send("Please enter email & password");
-      const user = await UserModel.findOne({ username });
+      const user = await UserModel.findOne({ username: userName });
       if (!user) return res.send("Invalid username or Password");
       const isPasswordMatched = await user.comparePassword(password);
       if (!isPasswordMatched) return res.send("Invalid username or Password");
@@ -91,7 +94,7 @@ class User {
   static updateProfile = async (req, res) => {
     try {
       const newUserData = {
-        name: req.body.name,
+        userName: req.body.userName,
         email: req.body.email,
       };
 
