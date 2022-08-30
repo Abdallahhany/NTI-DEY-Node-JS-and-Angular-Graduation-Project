@@ -28,12 +28,11 @@ class User {
   static registerUser = async (req, res) => {
     try {
       const { userName, email, password } = req.body;
-      const checkUser = await UserModel.findOne({ email });
-
+      const checkUser = await UserModel.findOne({ userName });
       if (checkUser) {
         return res.send({
           success: false,
-          msg: "User with That Email Already Exists",
+          msg: "User with That username Already Exists",
         });
       }
 
@@ -42,8 +41,10 @@ class User {
         email,
         password,
       });
+      console.log(user);
       res.send({ success: true, user, msg: "user register successfully" });
     } catch (e) {
+      console.log(e);
       res.send({ success: false, err: e.message });
     }
   };
