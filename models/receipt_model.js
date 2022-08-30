@@ -1,28 +1,22 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const receiptSchema = mongoose.Schema({
-    userId:{
-        ref:'User',
-        type:mongoose.Schema.Types.ObjectId,
-        required:true
+const receiptSchema = mongoose.Schema(
+  {
+    user: {
+      ref: "User",
+      type: mongoose.Schema.Types.ObjectId,
     },
-    books:[
-        {
-            bookId:{
-                ref:'Book',
-                type:mongoose.Schema.Types.ObjectId,
-                required:true
-            }
-        }
-    ],
-    totalPrice:{
-        type:Number,
-        required:true,
-    }
-},{
-    timestamps:true
-});
+    productsInfo: [],
+    totalPrice: {
+      type: Number,
+      default: 0,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-const receiptModel = mongoose.model('Receipt',receiptSchema);
+const receiptModel = mongoose.model("Receipt", receiptSchema);
 
 module.exports = receiptModel;

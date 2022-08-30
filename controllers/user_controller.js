@@ -28,7 +28,6 @@ class User {
   static registerUser = async (req, res) => {
     try {
       const { userName, email, password } = req.body;
-
       const checkUser = await UserModel.findOne({ email });
 
       if (checkUser) {
@@ -50,10 +49,10 @@ class User {
   };
   static loginUser = async (req, res) => {
     try {
-      const { username: userName, password } = req.body;
+      const { userName, password } = req.body;
       if (!userName || !password)
         return res.send("Please enter email & password");
-      const user = await UserModel.findOne({ username: userName });
+      const user = await UserModel.findOne({ userName });
       if (!user) return res.send("Invalid username or Password");
       const isPasswordMatched = await user.comparePassword(password);
       if (!isPasswordMatched) return res.send("Invalid username or Password");

@@ -2,6 +2,7 @@ const express = require("express");
 const userRouter = express.Router();
 const userController = require("../controllers/user_controller");
 const { isAuth, authRoles } = require("../middlewares/auth_middleware");
+const NotFound = require("../controllers/error");
 
 userRouter.post("/register", userController.registerUser);
 userRouter.post("/login", userController.loginUser);
@@ -36,5 +37,7 @@ userRouter.delete(
   authRoles("admin"),
   userController.deleteUser
 );
+
+userRouter.all("*", NotFound.notFoundPage);
 
 module.exports = userRouter;

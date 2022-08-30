@@ -1,11 +1,13 @@
-const express = require('express');
+const express = require("express");
 const cartRouter = express.Router();
-const cartController = require('../controllers/cart_controller');
+const cartController = require("../controllers/cart_controller");
+const NotFound = require("../controllers/error");
+const { isAuth } = require("../middlewares/auth_middleware");
 
-//add user auth middleware
-cartRouter.get('/show',cartController.showCart);
-cartRouter.post('/add',cartController.addToCart);
-cartRouter.delete('/delete/:bookId',cartController.deleteBookFromCart);
-cartRouter.delete('/delete',cartController.clearCart);
+cartRouter.get("/show", isAuth, cartController.showCart);
+cartRouter.post("/add/:bookId", isAuth, cartController.addToCart);
+cartRouter.delete("/delete/:bookId", isAuth, cartController.deleteBookFromCart);
+cartRouter.post("/checkout", isAuth, cartController.checkout);
+cartRouter.all("*", NotFound.notFoundPage);
 
 module.exports = cartRouter;
