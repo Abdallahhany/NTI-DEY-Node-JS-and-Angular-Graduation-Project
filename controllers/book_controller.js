@@ -19,38 +19,18 @@ class Book {
       res.status(500).send({ success: false, err: e.message, data: e });
     }
   };
-  static addBook = async (req, res) => {
-    try {
-      const data = req.body;
-      const book = new bookModel(data);
-      await book.save();
-      res.status(200).send({ success: true, data: book });
-    } catch (e) {
+  static addBook = async (req,res)=>{
+    try{
+        const data = JSON.parse(req.body.data);
+        const book = new bookModel({image:req.file.filename,...data});
+        await book.save();
+        res.status(200).send({success:true,data:book});
+    }catch(e){
       console.log(e);
-
-      res.status(500).send({ success: false, err: e.message });
+        if(req.feile) fs.unlinkSync(path.join(__dirname,'../images/'+req.file.filename));
+        res.status(500).send({success:false,err:e.message,data:e});
     }
-  };
-  static addImage = async (req, res) => {
-    try {
-      const data = await bookModel.findOneAndUpdate(
-        { _id: req.params.bookId },
-        {
-          $set: {
-            image: req.file.path,
-          },
-        },
-        {
-          new: true,
-        }
-      );
-      res.send({ success: true, data });
-    } catch (error) {
-      if (req.file)
-        fs.unlinkSync(path.join(__dirname, "../images/" + req.file.filename));
-      res.status(500).send({ success: false, err: error.message });
-    }
-  };
+}
 
   static updateBook = async (req, res) => {
     const bookId = req.params.bookId;

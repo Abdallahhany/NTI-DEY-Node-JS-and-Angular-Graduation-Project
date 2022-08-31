@@ -14,8 +14,7 @@ const bookSchema = mongoose.Schema(
     },
     image: {
       type: String,
-      default:
-        "https://play-lh.googleusercontent.com/_tslXR7zUXgzpiZI9t70ywHqWAxwMi8LLSfx8Ab4Mq4NUTHMjFNxVMwTM1G0Q-XNU80=w240-h480-rw",
+      required:true
     },
     price: {
       type: Number,
