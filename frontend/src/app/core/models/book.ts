@@ -1,12 +1,16 @@
 export interface Book {
   _id?: string;
   title: string;
+  author: string;
   description: string;
   image: string;
-  price: number;
-  category: string;
-  author: string;
   numOfPages: number;
-  rating?: number;
-  quantity: number;
+  rating?:number;
+  ratedBy?:[{
+    userId:string,
+    rateValue:number
+  }];
+  price: number;
+  category:string;
+  purchaseCount?: number;
 }

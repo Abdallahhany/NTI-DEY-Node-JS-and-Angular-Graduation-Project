@@ -1,0 +1,10 @@
+body{
+    height: 100vh;
+}
+.card{
+    height: 75vh;
+}
+img{
+    height:80%;
+    border:1px solid rgb(209, 206, 206);
+}

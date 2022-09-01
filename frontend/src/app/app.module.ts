@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NavComponent } from './componants/shared/nav/nav.component';
 import { SingleComponent } from './componants/books/single/single.component';
+import { AddBookComponent } from './componants/books/add-book/add-book.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SingleComponent } from './componants/books/single/single.component';
     HomeComponent,
     NavComponent,
     SingleComponent,
+    AddBookComponent,
   ],
   imports: [
     BrowserModule,

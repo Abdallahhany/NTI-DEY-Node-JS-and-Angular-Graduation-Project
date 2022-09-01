@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Book } from 'src/app/core/models/book';
+import { User } from 'src/app/core/models/user';
 import { BookServices } from 'src/app/core/services/book_services';
+import { UserServices } from 'src/app/core/services/user_services';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +12,11 @@ import { BookServices } from 'src/app/core/services/book_services';
 })
 export class HomeComponent implements OnInit {
   books!: Book[];
+  user: User | undefined;
 
   constructor(
     private bookServices: BookServices,
+    public userServices: UserServices,
     private toastr: ToastrService
   ) {
     bookServices.getAllBooks().subscribe((res) => {

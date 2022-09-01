@@ -16,7 +16,7 @@ class Book {
       const book = await bookModel.findById(req.params.bookId);
       res.status(200).send({ success: true, data: book });
     } catch (e) {
-      res.send({ success: false, msg: e.message, data: e });
+      res.status(500).send({ success: false, msg: e.message, data: e });
     }
   };
   static addBook = async (req, res) => {

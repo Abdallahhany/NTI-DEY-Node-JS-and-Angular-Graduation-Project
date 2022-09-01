@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddBookComponent } from './componants/books/add-book/add-book.component';
 import { SingleComponent } from './componants/books/single/single.component';
 import { HomeComponent } from './componants/home/home.component';
 import { LoginComponent } from './componants/user/login/login.component';
@@ -11,14 +12,10 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent },
-  {
-    path: 'books',
-    children: [
-      {
-        path: 'single',
-        children: [{ path: ':id', component: SingleComponent }],
-      },
-    ],
+  { path: 'books', children: [
+    { path: 'single/:bookId', component: SingleComponent},
+    { path: 'add', component: AddBookComponent},
+  ]
   },
 ];
 
