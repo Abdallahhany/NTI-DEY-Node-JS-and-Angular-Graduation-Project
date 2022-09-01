@@ -13,6 +13,8 @@ import { UserServices } from './core/services/user_services';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
+import { NavComponent } from './componants/shared/nav/nav.component';
+import { SingleComponent } from './componants/books/single/single.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { ToastrModule } from 'ngx-toastr';
     RegisterComponent,
     ProfileComponent,
     HomeComponent,
+    NavComponent,
+    SingleComponent,
   ],
   imports: [
     BrowserModule,

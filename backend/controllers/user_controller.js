@@ -127,12 +127,12 @@ class User {
       req.user.tokens.splice((tok) => tok.token == req.token);
       await req.user.save();
       res.send({
-        apiStatus: true,
-        message: "logged out",
+        success: true,
+        msg: "logged out",
         data: req.user,
       });
     } catch (e) {
-      res.send({ success: false, err: e.message });
+      res.send({ success: false, msg: e.message });
     }
   };
   static updateUser = async (req, res) => {

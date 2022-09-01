@@ -8,7 +8,7 @@ class Book {
       const books = await bookModel.find();
       res.status(200).send({ success: true, data: books });
     } catch (e) {
-      res.status(500).send({ success: false, err: e.message, data: e });
+      res.status(500).send({ success: false, msg: e.message, data: e });
     }
   };
   static singleBook = async (req, res) => {
@@ -16,21 +16,22 @@ class Book {
       const book = await bookModel.findById(req.params.bookId);
       res.status(200).send({ success: true, data: book });
     } catch (e) {
-      res.status(500).send({ success: false, err: e.message, data: e });
+      res.send({ success: false, msg: e.message, data: e });
     }
   };
-  static addBook = async (req,res)=>{
-    try{
-        const data = JSON.parse(req.body.data);
-        const book = new bookModel({image:req.file.filename,...data});
-        await book.save();
-        res.status(200).send({success:true,data:book});
-    }catch(e){
+  static addBook = async (req, res) => {
+    try {
+      const data = JSON.parse(req.body.data);
+      const book = new bookModel({ image: req.file.filename, ...data });
+      await book.save();
+      res.status(200).send({ success: true, data: book });
+    } catch (e) {
       console.log(e);
-        if(req.feile) fs.unlinkSync(path.join(__dirname,'../images/'+req.file.filename));
-        res.status(500).send({success:false,err:e.message,data:e});
+      if (req.feile)
+        fs.unlinkSync(path.join(__dirname, "../images/" + req.file.filename));
+      res.status(500).send({ success: false, msg: e.message, data: e });
     }
-}
+  };
 
   static updateBook = async (req, res) => {
     const bookId = req.params.bookId;
@@ -51,7 +52,7 @@ class Book {
         fs.unlinkSync(path.join(__dirname, "../images/" + prevImg));
       res.status(200).send({ success: true, data: book });
     } catch (e) {
-      res.status(500).send({ success: false, err: e.message, data: e });
+      res.status(500).send({ success: false, msg: e.message, data: e });
     }
   };
   static deleteBook = async (req, res) => {
@@ -63,7 +64,7 @@ class Book {
       fs.unlinkSync(path.join(__dirname, "../images/" + prevImg));
       res.status(200).send({ success: true, msg: "deleted successfully" });
     } catch (e) {
-      res.status(500).send({ success: false, err: e.message, data: e });
+      res.status(500).send({ success: false, msg: e.message, data: e });
     }
   };
 }

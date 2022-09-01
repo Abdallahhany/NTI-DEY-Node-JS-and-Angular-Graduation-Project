@@ -42,8 +42,10 @@ export class RegisterComponent implements OnInit {
   handelRegister() {
     const userData: User = this.registerForm.value;
     this.userServices.register(userData).subscribe((res) => {
-      if (res.success) this.router.navigateByUrl('/login');
-      else this.toastr.error(res.msg);
+      if (res.success) {
+        this.toastr.success('User register successfully');
+        this.router.navigateByUrl('/login');
+      } else this.toastr.error(res.msg);
       console.log(res);
     });
     console.log(this.registerForm.value);

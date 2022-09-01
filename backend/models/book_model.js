@@ -14,7 +14,7 @@ const bookSchema = mongoose.Schema(
     },
     image: {
       type: String,
-      required:true
+      required: true,
     },
     price: {
       type: Number,
@@ -37,22 +37,9 @@ const bookSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
-    ratedBy: [
-      {
-        userId: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "User",
-        },
-        rateValue: {
-          type: Number,
-          min: 0,
-          max: 5,
-        },
-      },
-    ],
-    purchaseCount: {
+    quantity: {
       type: Number,
-      default: 0,
+      required: true,
     },
   },
   {

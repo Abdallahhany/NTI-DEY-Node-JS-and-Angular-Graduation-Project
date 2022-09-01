@@ -1,10 +1,12 @@
 export interface Book {
-  _id: string;
+  _id?: string;
   title: string;
-  author: string;
   description: string;
-  cover: string;
-  pagesCount: number;
+  image: string;
   price: number;
-  qty?: number;
+  category: string;
+  author: string;
+  numOfPages: number;
+  rating?: number;
+  quantity: number;
 }

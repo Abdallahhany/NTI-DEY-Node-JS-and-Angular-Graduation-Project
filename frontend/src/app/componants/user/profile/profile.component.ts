@@ -16,19 +16,19 @@ export class ProfileComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private _userService: UserServices
-  ) {
-    _userService.getMe().subscribe((res) => {
+  ) {}
+
+  ngOnInit(): void {
+    this._userService.getMe().subscribe((res) => {
       console.log(res);
 
       if (!res.success) {
-        toastr.error('Login first To access this page');
-        router.navigateByUrl('/login');
+        this.toastr.error('Login first To access this page');
+        this.router.navigateByUrl('/login');
         return;
       }
       this.user = res.user;
       console.log(this.user);
     });
   }
-
-  ngOnInit(): void {}
 }

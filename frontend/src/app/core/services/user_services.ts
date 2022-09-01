@@ -9,6 +9,8 @@ import { User } from '../models/user';
 export class UserServices {
   constructor(private _http: HttpClient) {}
   baseURL = 'http://localhost:3000/api/users';
+  user: User | null = null;
+  isLoggedIn: boolean = false;
 
   register(data: User): Observable<any> {
     return this._http.post(`${this.baseURL}/register`, data);

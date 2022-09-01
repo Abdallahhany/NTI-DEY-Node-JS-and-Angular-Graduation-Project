@@ -6,7 +6,7 @@ const NotFound = require("../controllers/error");
 
 userRouter.post("/register", userController.registerUser);
 userRouter.post("/login", userController.loginUser);
-userRouter.get("/logout", userController.logout);
+userRouter.get("/logout", isAuth, userController.logout);
 userRouter.get("/me", isAuth, userController.getMe);
 userRouter.put("/password/update", isAuth, userController.updatePassword);
 userRouter.put("/me/update", isAuth, userController.updateProfile);

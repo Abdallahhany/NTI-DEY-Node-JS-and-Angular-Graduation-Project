@@ -4,14 +4,14 @@
       <div class="well well-sm">
         <div class="row">
           <div class="col-sm-6 col-md-4">
-            <img src="{{user.avatar}}" alt="" class="img-rounded img-responsive" width="150" height="150" />
+            <img src="{{user!.avatar}}"  alt="Loading!" class="img-rounded img-responsive" width="150" height="150" />
           </div>
           <div class="col-sm-6 col-md-8">
-            <h4> {{user.userName}}</h4>
+            <h4> {{user!.userName}}</h4>
             <p>
-              <i class="glyphicon glyphicon-envelope"></i>{{user.email}}
+              <i class="glyphicon glyphicon-envelope"></i>{{user!.email}}
               <br />
-              <i class="glyphicon glyphicon-gift"></i>{{user.role}}
+              <i class="glyphicon glyphicon-gift"></i>{{user!.role}}
             </p>
             <!-- Split button -->
             <div class="btn-group">
