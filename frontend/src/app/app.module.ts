@@ -16,6 +16,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { NavComponent } from './componants/shared/nav/nav.component';
 import { SingleComponent } from './componants/books/single/single.component';
 import { AddBookComponent } from './componants/books/add-book/add-book.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ import { AddBookComponent } from './componants/books/add-book/add-book.component
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    NgbModule,
   ],
   providers: [
     UserServices,

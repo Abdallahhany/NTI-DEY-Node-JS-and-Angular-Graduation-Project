@@ -1,4 +1,4 @@
-<div class="row g-5">
+<div class="row g-5 position-relative">
   <div class="col-4" *ngFor="let book of books">
   <div class="card h-100 p-3">
     <h3>{{book.title}}</h3>
@@ -19,9 +19,15 @@
       class="btn btn-primary col-5 me-2 mb-2">Update</a>
 
       <a *ngIf="userServices.user?.role == 'admin'" 
-      class="btn btn-primary col-5 mb-2">Delete</a>
+      class="btn btn-primary col-5 mb-2" (click)="top(book._id)" >Delete</a>
+
     </div>
   </div>
     
+  </div>
+  <div class="deleteDialogue text-center w-50 p-5" *ngIf="deleteDialogue">
+    <h4>Are You Sure You want to delete this item?</h4>
+    <button (click)="deleteBook()" class="me-3">Ok</button>
+    <button (click)="deleteDialogue=!deleteDialogue">Cancel</button>
   </div>
 </div>

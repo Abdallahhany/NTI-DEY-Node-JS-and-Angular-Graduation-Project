@@ -2,3 +2,10 @@ img{
     height: 65%;
     border: 1px solid rgb(211, 206, 206);
 }
+.deleteDialogue{
+    border:1px solid rgb(211, 206, 206);
+    background-color: rgb(71, 194, 194);
+    position: absolute;
+    left: 25%;
+    top:10%;
+}

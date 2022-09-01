@@ -24,6 +24,6 @@ export class BookServices {
     return this._http.put(`${this.baseURL}/single/${id}`, data);
   }
   deleteBook(id: string): Observable<any> {
-    return this._http.delete(`${this.baseURL}/single/${id}`);
+    return this._http.delete(`${this.baseURL}/delete/${id}`);
   }
 }

@@ -13,6 +13,8 @@ import { UserServices } from 'src/app/core/services/user_services';
 export class HomeComponent implements OnInit {
   books!: Book[];
   user: User | undefined;
+  deleteDialogue:boolean = false;
+  deletedBookId:any;
 
   constructor(
     private bookServices: BookServices,
@@ -29,5 +31,24 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  top(id:any){
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+    this.deleteDialogue = true;
+    this.deletedBookId = id;
+  }
   ngOnInit(): void {}
+
+  deleteBook(){
+    this.deleteDialogue = false;
+    this.bookServices.deleteBook(this.deletedBookId).subscribe(
+      data=> this.books=this.books.filter((book)=>book._id != this.deletedBookId),
+      e=>console.log(e),
+      ()=>{}
+    )
+  }
+
 }
