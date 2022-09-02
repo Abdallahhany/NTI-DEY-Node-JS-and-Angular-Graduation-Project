@@ -1,0 +1,70 @@
+<form [formGroup]="updateBookForm" class="w-75 m-auto" (ngSubmit)="updateBook()">
+    <div class="row">
+        <div class="mb-3">
+            <input type="text" class="form-control" formControlName="title" placeholder="Title">
+        </div>
+        <div class="alert alert-danger" 
+        *ngIf="title?.errors && (title?.touched || title?.dirty || formSubmitted)">
+            <li *ngIf="title?.errors?.['required']">Title is required</li>
+            <li *ngIf="title?.errors?.['minlength']">Title is less than 3 letters</li>
+        </div>
+
+        <div class="mb-3">
+            <textarea formControlName="description" placeholder="Description" 
+            class="w-100 form-control" rows="5"></textarea>
+        </div>
+        <div class="alert alert-danger" 
+        *ngIf="description?.errors && (description?.touched || description?.dirty || formSubmitted)">
+            <li *ngIf="description?.errors?.['required']">Description is required</li>
+            <li *ngIf="description?.errors?.['minlength']">Description is less than 5 letters</li>
+        </div>
+
+        <div class="mb-3">
+            <input type="text" class="form-control" formControlName="category" placeholder="Category">
+        </div>
+        <div class="alert alert-danger" 
+        *ngIf="category?.errors && (category?.touched || category?.dirty || formSubmitted)">
+            <li *ngIf="category?.errors?.['required']">Category is required</li>
+        </div>
+
+        <div class="mb-3">
+            <input type="text" class="form-control" formControlName="author" placeholder="Author">
+        </div>
+        <div class="alert alert-danger" 
+        *ngIf="author?.errors && (author?.touched || author?.dirty || formSubmitted)">
+            <li *ngIf="author?.errors?.['required']">Author is required</li>
+            <li *ngIf="author?.errors?.['minlength']">Author is less than 3 letters</li>
+        </div>
+
+        <div class="mb-3">
+            <input type="number" class="form-control" formControlName="price" placeholder="Price">
+        </div>
+        <div class="alert alert-danger" 
+        *ngIf="price?.errors && (price?.touched || price?.dirty || formSubmitted)">
+            <li *ngIf="price?.errors?.['required']">Price is required and should be a number</li>
+        </div>
+
+        <div class="mb-3">
+            <input type="number" class="form-control" formControlName="numOfPages" placeholder="Pages Count">
+        </div>
+        <div class="alert alert-danger" 
+        *ngIf="numOfPages?.errors && (numOfPages?.touched || numOfPages?.dirty || formSubmitted)">
+            <li *ngIf="numOfPages?.errors?.['required']">Pages count is required and should be a number</li>
+        </div>
+
+        <div class="mb-3">
+            <input type="number" class="form-control" formControlName="quantity" placeholder="Quantity">
+        </div>
+        <div class="alert alert-danger" 
+        *ngIf="quantity?.errors && (quantity?.touched || quantity?.dirty || formSubmitted)">
+            <li *ngIf="quantity?.errors?.['required']">Quantity is required and should be a number</li>
+        </div>
+
+        <div class="mb-3">
+            <input type="file" class="form-control" formControlName="image" (change)="addImage($event)">
+            <p class="mt-1">Max Image Size: 6MB</p>
+        </div>
+
+    </div>
+    <button class="btn btn-primary">Update</button>
+</form>    

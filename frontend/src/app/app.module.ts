@@ -17,6 +17,7 @@ import { NavComponent } from './componants/shared/nav/nav.component';
 import { SingleComponent } from './componants/books/single/single.component';
 import { AddBookComponent } from './componants/books/add-book/add-book.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UpdateBookComponent } from './componants/books/update-book/update-book.component';
 
 
 
@@ -30,6 +31,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NavComponent,
     SingleComponent,
     AddBookComponent,
+    UpdateBookComponent,
   ],
   imports: [
     BrowserModule,

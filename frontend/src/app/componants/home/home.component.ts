@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Book } from 'src/app/core/models/book';
 import { User } from 'src/app/core/models/user';
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private bookServices: BookServices,
     public userServices: UserServices,
+    private router:Router,
     private toastr: ToastrService
   ) {
     bookServices.getAllBooks().subscribe((res) => {

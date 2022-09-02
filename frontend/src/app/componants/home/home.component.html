@@ -3,12 +3,12 @@
   <div class="card h-100 p-3">
     <h3>{{book.title}}</h3>
     <img class="img-fluid" src="http://localhost:3000/images/{{book.image}}" alt="book-image">
-    <div class="row my-3">
-      <div class="col-8">
+    <div class="row my-3 text-center">
+      <div>
         <h6>Author: {{book.author}}</h6>
       </div>
-      <div class="col-4 text-end">
-        <h6>{{book.price}} EGP</h6>
+      <div>
+        <h6>Category: {{book.category}}</h6>
       </div>
     </div>
     <div class="text-center">
@@ -16,7 +16,7 @@
       <a routerLink="" class="btn btn-primary col-5 mb-2">Buy</a>
 
       <a *ngIf="userServices.user?.role == 'admin'" 
-      class="btn btn-primary col-5 me-2 mb-2">Update</a>
+      class="btn btn-primary col-5 me-2 mb-2" routerLink="/books/update/{{book._id}}">Update</a>
 
       <a *ngIf="userServices.user?.role == 'admin'" 
       class="btn btn-primary col-5 mb-2" (click)="top(book._id)" >Delete</a>

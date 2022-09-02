@@ -20,8 +20,8 @@ export class BookServices {
   getSingleBook(id: string): Observable<any> {
     return this._http.get(`${this.baseURL}/single/${id}`);
   }
-  updateBook(id: string, data: Book): Observable<any> {
-    return this._http.put(`${this.baseURL}/single/${id}`, data);
+  updateBook(id: string, data: any): Observable<any> {
+    return this._http.put(`${this.baseURL}/update/${id}`, data);
   }
   deleteBook(id: string): Observable<any> {
     return this._http.delete(`${this.baseURL}/delete/${id}`);
