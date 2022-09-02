@@ -1,6 +1,8 @@
 <form [formGroup]="updateBookForm" class="w-75 m-auto" (ngSubmit)="updateBook()">
+    <h2 class="text-center mb-3">Update Book</h2>
     <div class="row">
         <div class="mb-3">
+            <label class="form-label">Title</label>
             <input type="text" class="form-control" formControlName="title" placeholder="Title">
         </div>
         <div class="alert alert-danger" 
@@ -10,6 +12,7 @@
         </div>
 
         <div class="mb-3">
+            <label class="form-label">Description</label>
             <textarea formControlName="description" placeholder="Description" 
             class="w-100 form-control" rows="5"></textarea>
         </div>
@@ -20,6 +23,7 @@
         </div>
 
         <div class="mb-3">
+            <label class="form-label">Category</label>
             <input type="text" class="form-control" formControlName="category" placeholder="Category">
         </div>
         <div class="alert alert-danger" 
@@ -28,6 +32,7 @@
         </div>
 
         <div class="mb-3">
+            <label class="form-label">Author</label>
             <input type="text" class="form-control" formControlName="author" placeholder="Author">
         </div>
         <div class="alert alert-danger" 
@@ -37,6 +42,7 @@
         </div>
 
         <div class="mb-3">
+            <label class="form-label">Price</label>
             <input type="number" class="form-control" formControlName="price" placeholder="Price">
         </div>
         <div class="alert alert-danger" 
@@ -45,6 +51,7 @@
         </div>
 
         <div class="mb-3">
+            <label class="form-label">Pages Count</label>
             <input type="number" class="form-control" formControlName="numOfPages" placeholder="Pages Count">
         </div>
         <div class="alert alert-danger" 
@@ -53,6 +60,7 @@
         </div>
 
         <div class="mb-3">
+            <label class="form-label">Quantity</label>
             <input type="number" class="form-control" formControlName="quantity" placeholder="Quantity">
         </div>
         <div class="alert alert-danger" 
