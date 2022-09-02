@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
         return;
       }
       this.books = res.data;
-      console.log(this.books);
     });
   }
 

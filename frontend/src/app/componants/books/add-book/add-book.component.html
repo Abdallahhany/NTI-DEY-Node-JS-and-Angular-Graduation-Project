@@ -61,7 +61,8 @@
         </div>
 
         <div class="mb-3">
-            <input type="file" class="form-control" formControlName="image">
+            <input type="file" class="form-control" formControlName="image" (change)="addImage($event)">
+            <p class="mt-1">Max Image Size: 6MB</p>
         </div>
         <div class="alert alert-danger" 
         *ngIf="image?.errors && (image?.touched || image?.dirty || formSubmitted)">

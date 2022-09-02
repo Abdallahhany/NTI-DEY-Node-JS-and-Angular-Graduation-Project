@@ -11,7 +11,7 @@ export class BookServices {
   baseURL = 'http://localhost:3000/api/books';
   book: Book | null = null;
 
-  addBook(data: Book): Observable<any> {
+  addBook(data: any): Observable<any> {
     return this._http.post(`${this.baseURL}/add`, data);
   }
   getAllBooks(): Observable<any> {
