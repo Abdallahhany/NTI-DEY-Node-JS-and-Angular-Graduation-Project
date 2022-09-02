@@ -12,5 +12,5 @@ export interface Book {
   }];
   price: number;
   category:string;
-  purchaseCount?: number;
+  quantity: number;
 }
