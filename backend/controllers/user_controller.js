@@ -6,7 +6,7 @@ class User {
       const users = await UserModel.find();
       res.status(200).send({ success: true, users });
     } catch (e) {
-      res.send({ success: false, err: e.message });
+      res.send({ success: false, msg: e.message });
     }
   };
   static getSingleUser = async (req, res) => {
@@ -14,7 +14,10 @@ class User {
       const user = await UserModel.findById(req.params.id);
 
       if (!user) {
-        return res.send({ msg: "User with that id not founds" });
+        return res.send({
+          success: false,
+          msg: "User with that id not founds",
+        });
       }
 
       res.status(200).json({
@@ -22,7 +25,7 @@ class User {
         user,
       });
     } catch (e) {
-      res.send({ success: false, err: e.message });
+      res.send({ success: false, msg: e.message });
     }
   };
   static registerUser = async (req, res) => {
@@ -85,9 +88,8 @@ class User {
       // Check previous user password
       const isMatched = await user.comparePassword(req.body.oldPassword);
       if (!isMatched) {
-        return res.send("Old password is incorrect");
+        return res.send({ success: false, msg: "Old password is incorrect" });
       }
-
       user.password = req.body.newPassword;
       await user.save();
 
@@ -99,7 +101,7 @@ class User {
       });
     } catch (e) {
       console.log(e);
-      res.send({ success: false, err: e.message });
+      res.send({ success: false, msg: e.message });
     }
   };
   static updateProfile = async (req, res) => {
@@ -107,6 +109,7 @@ class User {
       const newUserData = {
         userName: req.body.userName,
         email: req.body.email,
+        avatar: req.body.avatar,
       };
 
       const user = await UserModel.findByIdAndUpdate(req.user.id, newUserData, {
@@ -135,7 +138,7 @@ class User {
       res.send({ success: false, msg: e.message });
     }
   };
-  static updateUser = async (req, res) => {
+  static updateUserRole = async (req, res) => {
     try {
       const newUserData = {
         role: req.body.role,
@@ -151,6 +154,7 @@ class User {
 
       res.status(200).json({
         success: true,
+        msg: "User Updated successfully",
         user,
       });
     } catch (e) {
@@ -160,11 +164,15 @@ class User {
   static deleteUser = async (req, res) => {
     const user = await UserModel.findById(req.params.id);
     if (!user) {
-      return res.send(`User with id: ${req.params.id} not found`);
+      return res.send({
+        success: false,
+        msg: `User with id: ${req.params.id} not found`,
+      });
     }
     await user.remove();
     res.status(200).json({
       success: true,
+      msg: "User Deleted Successfully",
     });
   };
   static getMe = async (req, res) => {

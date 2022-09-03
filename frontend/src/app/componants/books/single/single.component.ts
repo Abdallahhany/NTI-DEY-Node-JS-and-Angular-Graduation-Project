@@ -12,7 +12,7 @@ import { BookServices } from 'src/app/core/services/book_services';
 export class SingleComponent implements OnInit {
   id!: string | null;
   book: Book | undefined;
-  urlImage:string = "http://localhost:3000/images/";
+  urlImage: string = 'http://localhost:3000/images/';
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -24,19 +24,20 @@ export class SingleComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('bookId');
     if (!this.id) {
-      this.toastr.error('There is No Book with that ID');
+      this.toastr.error('Please Enter Book ID');
       this.router.navigateByUrl('/');
       return;
     }
-    this.bookServices.getSingleBook(this.id).subscribe((res) => {
-      this.book = res.data;
-      console.log(this.book);
-    },
-    (e)=>{
-      this.toastr.error('There is No Book with that ID');
-      this.router.navigateByUrl('/');
-      return;
-    }
+    this.bookServices.getSingleBook(this.id).subscribe(
+      (res) => {
+        this.book = res.data;
+        console.log(this.book);
+      },
+      (e) => {
+        this.toastr.error('There is No Book with that ID');
+        this.router.navigateByUrl('/');
+        return;
+      }
     );
   }
 }

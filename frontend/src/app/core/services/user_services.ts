@@ -24,7 +24,10 @@ export class UserServices {
   getMe(): Observable<any> {
     return this._http.get(`${this.baseURL}/me`);
   }
-  updatePassword(data: { newPassword: string }): Observable<any> {
+  updatePassword(data: {
+    oldPassword: string;
+    newPassword: string;
+  }): Observable<any> {
     return this._http.put(`${this.baseURL}/password/update`, data);
   }
   updateProfile(data: { userName: string; email: string }): Observable<any> {
@@ -34,12 +37,12 @@ export class UserServices {
     return this._http.get(`${this.baseURL}/admin/users`);
   }
   getSingleUser(id: string): Observable<any> {
-    return this._http.get(`${this.baseURL}/admin/single/:${id}`);
+    return this._http.get(`${this.baseURL}/admin/single/${id}`);
   }
-  updateUser(id: string, data: { role: string }): Observable<any> {
-    return this._http.put(`${this.baseURL}/admin/user/:${id}`, data);
+  updateUserRole(id: string, data: { role: string }): Observable<any> {
+    return this._http.put(`${this.baseURL}/admin/user/${id}`, data);
   }
   deleteUser(id: string): Observable<any> {
-    return this._http.delete(`${this.baseURL}/admin/user/:${id}`);
+    return this._http.delete(`${this.baseURL}/admin/user/${id}`);
   }
 }

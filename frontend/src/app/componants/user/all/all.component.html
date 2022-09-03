@@ -1,0 +1,28 @@
+<div class="row g-5 position-relative">
+  <div class="col-4" *ngFor="let user of users">
+    <div class="card h-100 p-3">
+      <h3>{{user._id}}</h3>
+      <div class="row my-3 text-center">
+        <div>
+          <h6>Name: {{user.userName}}</h6>
+        </div>
+        <div>
+          <h6>Email: {{user.email}}</h6>
+        </div>
+        <div>
+          <h6>Role: {{user.role}}</h6>
+        </div>
+        <div>
+          <h6>Actions:</h6>
+          <div class="btn-group m-3">
+            <button type="button" class="btn btn-primary" routerLink = "/users/edit/{{user._id}}">
+              Edit</button>
+          </div>
+          <div class="btn-group m-3">
+            <button router type="button" class="btn btn-danger" (click)="deleteUser(user._id)">
+              Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

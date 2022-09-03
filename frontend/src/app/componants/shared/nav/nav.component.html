@@ -24,6 +24,11 @@
           Add Book</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" *ngIf="userServices.user?.role == 'admin'" routerLink="/users/all" [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{exact:true}">
+            All Users</a>
+        </li>
+        <li class="nav-item">
           <button class="nav-item nav-link" *ngIf="userServices.isLoggedIn" routerLinkActive="active"
           ariaCurrentWhenActive="page" (click)="handelLogOut()">Logout</button>
         </li>

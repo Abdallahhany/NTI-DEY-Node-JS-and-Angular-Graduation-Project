@@ -28,9 +28,10 @@ exports.isAuth = async (req, res, next) => {
 exports.authRoles = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
-      return res.send(
-        `Role (${req.user.role}) is not allowed to access this resource`
-      );
+      return res.send({
+        sucess: false,
+        msg: `Role (${req.user.role}) is not allowed to access this resource`,
+      });
     }
     next();
   };

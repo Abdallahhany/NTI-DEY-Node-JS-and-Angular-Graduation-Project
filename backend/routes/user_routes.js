@@ -29,7 +29,7 @@ userRouter.put(
   "/admin/user/:id",
   isAuth,
   authRoles("admin"),
-  userController.updateUser
+  userController.updateUserRole
 );
 userRouter.delete(
   "/admin/user/:id",

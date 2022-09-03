@@ -1,0 +1,25 @@
+<div class="row g-5 position-relative">
+    <div class="card h-100 p-3">
+      <div class="row my-3 text-center">
+        <h3>{{user._id}}</h3>
+        <div>
+          <h6>Name: {{user.userName}}</h6>
+        </div>
+        <div>
+          <h6>Email: {{user.email}}</h6>
+        </div>
+        <div>
+          <h6>Role: {{user.role}}</h6>
+        </div>
+      </div>
+      <select #roles >
+        <option value="admin">admin</option>
+        <option value="user">user</option>
+      </select>
+       <div class="btn-group m-3">
+        <button router type="button" class="btn btn-primary" (click)="editUser(roles.value)">
+          Update</button>
+      </div> 
+  </div>
+  
+</div>

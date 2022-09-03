@@ -18,6 +18,10 @@ import { SingleComponent } from './componants/books/single/single.component';
 import { AddBookComponent } from './componants/books/add-book/add-book.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateBookComponent } from './componants/books/update-book/update-book.component';
+import { AllComponent } from './componants/user/all/all.component';
+import { EditComponent } from './componants/user/edit/edit.component';
+import { EditProfileComponent } from './componants/user/edit-profile/edit-profile.component';
+import { ChangePasswordComponent } from './componants/user/change-password/change-password.component';
 
 
 
@@ -32,6 +36,10 @@ import { UpdateBookComponent } from './componants/books/update-book/update-book.
     SingleComponent,
     AddBookComponent,
     UpdateBookComponent,
+    AllComponent,
+    EditComponent,
+    EditProfileComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,

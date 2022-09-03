@@ -13,14 +13,14 @@ import { UserServices } from 'src/app/core/services/user_services';
 })
 export class HomeComponent implements OnInit {
   books!: Book[];
-  user: User | undefined;
-  deleteDialogue:boolean = false;
-  deletedBookId:any;
+  user!: User | null;
+  deleteDialogue: boolean = false;
+  deletedBookId: any;
 
   constructor(
     private bookServices: BookServices,
     public userServices: UserServices,
-    private router:Router,
+    private router: Router,
     private toastr: ToastrService
   ) {
     bookServices.getAllBooks().subscribe((res) => {
@@ -32,24 +32,26 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  top(id:any){
-    window.scroll({ 
-      top: 0, 
-      left: 0, 
-      behavior: 'smooth' 
+  top(id: any) {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
     });
     this.deleteDialogue = true;
     this.deletedBookId = id;
   }
   ngOnInit(): void {}
 
-  deleteBook(){
+  deleteBook() {
     this.deleteDialogue = false;
     this.bookServices.deleteBook(this.deletedBookId).subscribe(
-      data=> this.books=this.books.filter((book)=>book._id != this.deletedBookId),
-      e=>console.log(e),
-      ()=>{}
-    )
+      (data) =>
+        (this.books = this.books.filter(
+          (book) => book._id != this.deletedBookId
+        )),
+      (e) => console.log(e),
+      () => {}
+    );
   }
-
 }
