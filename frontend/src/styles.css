@@ -1,3 +1,5 @@
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+body {  font-family: Arial, Helvetica, sans-serif !important; font-size: 100% !important; }
 /* You can add global styles to this file, and also import other style files */
 /* based on angular-toastr css https://github.com/Foxandxss/angular-toastr/blob/cb508fe6801d6b288d3afc525bb40fee1b101650/dist/angular-toastr.css */
 
@@ -226,3 +228,5 @@ button.toast-close-button {
     width: 25em;
   }
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

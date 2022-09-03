@@ -1,19 +1,19 @@
 <div class="row g-5 position-relative">
   <div class="col-4" *ngFor="let book of books">
   <div class="card h-100 p-3">
-    <h3>{{book.title}}</h3>
+    <h2>{{book.title}}</h2>
     <img class="img-fluid" src="http://localhost:3000/images/{{book.image}}" alt="book-image">
     <div class="row my-3 text-center">
       <div>
-        <h6>Author: {{book.author}}</h6>
+        <h3>Author: {{book.author}}</h3>
       </div>
       <div>
-        <h6>Category: {{book.category}}</h6>
+        <h3>Category: {{book.category}}</h3>
       </div>
     </div>
     <div class="text-center">
       <a routerLink="/books/single/{{book._id}}" class="btn btn-primary col-5 me-2 mb-2">View Details</a>
-      <a routerLink="" class="btn btn-primary col-5 mb-2">Buy</a>
+      <a (click)="addCart(book._id)" class="btn btn-primary col-5 mb-2">Add To Cart</a>
 
       <a *ngIf="userServices.user?.role == 'admin'" 
       class="btn btn-primary col-5 me-2 mb-2" routerLink="/books/update/{{book._id}}">Update</a>

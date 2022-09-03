@@ -30,11 +30,11 @@ export class AddBookComponent implements OnInit {
     private router:Router, private toastService:ToastrService) { }
 
   ngOnInit(): void { 
-    setTimeout(() => {
-      if(this.userServices.user?.role != 'admin'){
-        this.router.navigateByUrl('/');
-      }
-    }, 2000);
+    // setTimeout(() => {
+    //   if(this.userServices.user?.role != 'admin'){
+    //     this.router.navigateByUrl('/');
+    //   }
+    // }, 2000);
   }
 
   get title(){ return this.addBookForm.get("title"); }

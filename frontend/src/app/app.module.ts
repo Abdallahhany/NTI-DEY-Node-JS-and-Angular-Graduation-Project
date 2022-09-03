@@ -11,6 +11,7 @@ import { ProfileComponent } from './componants/user/profile/profile.component';
 import { HomeComponent } from './componants/home/home.component';
 import { UserServices } from './core/services/user_services';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 import { ToastrModule } from 'ngx-toastr';
 import { NavComponent } from './componants/shared/nav/nav.component';
@@ -22,6 +23,7 @@ import { AllComponent } from './componants/user/all/all.component';
 import { EditComponent } from './componants/user/edit/edit.component';
 import { EditProfileComponent } from './componants/user/edit-profile/edit-profile.component';
 import { ChangePasswordComponent } from './componants/user/change-password/change-password.component';
+import { CartComponent } from './componants/cart/cart.component';
 
 
 
@@ -40,6 +42,7 @@ import { ChangePasswordComponent } from './componants/user/change-password/chang
     EditComponent,
     EditProfileComponent,
     ChangePasswordComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,7 @@ import { ChangePasswordComponent } from './componants/user/change-password/chang
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgbModule,
+    MatIconModule,
   ],
   providers: [
     UserServices,
