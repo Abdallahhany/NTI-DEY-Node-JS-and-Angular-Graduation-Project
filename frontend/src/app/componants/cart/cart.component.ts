@@ -64,4 +64,24 @@ export class CartComponent implements OnInit {
       return;
     });
   }
+
+  checkout(cartBooks: Book[], totalPrice: number) {
+    const data = {
+      products: cartBooks,
+      totalPrice,
+    };
+    this.cartServices.checkOut(data).subscribe((res) => {
+      console.log(res);
+
+      if (!res.success) {
+        this.toastr.error(res.msg);
+        this.router.navigateByUrl('/');
+        return;
+      }
+      this.toastr.success(res.msg);
+      this.router.navigateByUrl(`/`);
+
+      return;
+    });
+  }
 }

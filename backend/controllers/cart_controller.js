@@ -93,11 +93,9 @@ class Cart {
   static checkout = async (req, res) => {
     try {
       const userId = req.user.id;
-      let totalPrice = 0;
       let products = [];
       const cart = await cartModel.findOne({ user: userId }).populate("books");
       for (let book of cart.books) {
-        totalPrice += book.price * req.body[book._id.toString()];
         products.push({
           id: book._id,
           title: book.title,
@@ -110,7 +108,7 @@ class Cart {
       const receipt = await receiptModel.create({
         user: userId,
         productsInfo: products,
-        totalPrice: totalPrice,
+        totalPrice: req.body.totalPrice,
       });
       await userModel.update(
         { _id: userId },
@@ -120,6 +118,7 @@ class Cart {
       cart.totalPrice = 0;
       cart.save();
       return res.status(200).json({
+        success: true,
         msg: "Thank you for your order! Books will be sent to you as soon as possible!",
         data: receipt,
       });

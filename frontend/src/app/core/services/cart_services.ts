@@ -20,7 +20,7 @@ export class CartServices {
   deleteCart(id: string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/delete/${id}`);
   }
-  checkOut(data: string): Observable<any> {
+  checkOut(data: {}): Observable<any> {
     return this.http.post(`${this.baseUrl}/checkout`, data);
   }
 }

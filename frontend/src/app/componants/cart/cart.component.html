@@ -1,5 +1,5 @@
 <div class="card h-100 m-auto p-5">
-    <div class="row h-100">
+    <div class="row h-100" *ngIf="cartBooks.length >0">
         <div class="col-12 mb-3" *ngFor="let book of cartBooks">
             <div class="row">
             <div class="col-2">
@@ -13,8 +13,11 @@
             <button id="checkout_btn" class="btn btn-danger btn-block m-3" (click)="deleteCart(book._id)">Delete Cart
             </button>
         </div>
-        
+        <h2 class="ms-auto">Total Price {{totalPrice}} EGP</h2>
+        <button id="checkout_btn" class="btn btn-primary btn-block m-3" (click)="checkout(cartBooks,totalPrice)">Checkout
+        </button>
     </div>
-    <h2 class="ms-auto">Total Price {{totalPrice}} EGP</h2>
-    
+    <div class="row h-100" *ngIf="(cartBooks.length == 0)">
+        <h3>Your cart is Empty Please add products to your cart</h3>
+    </div>
 </div>
