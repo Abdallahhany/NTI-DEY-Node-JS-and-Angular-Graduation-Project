@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Book } from 'src/app/core/models/book';
+import { Cart } from 'src/app/core/models/cart';
 import { User } from 'src/app/core/models/user';
 import { BookServices } from 'src/app/core/services/book_services';
+import { CartServices } from 'src/app/core/services/cart_services';
 import { UserServices } from 'src/app/core/services/user_services';
 
 @Component({
@@ -20,6 +22,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private bookServices: BookServices,
     public userServices: UserServices,
+    private cartServices: CartServices,
     private router: Router,
     private toastr: ToastrService
   ) {
@@ -53,5 +56,18 @@ export class HomeComponent implements OnInit {
       (e) => console.log(e),
       () => {}
     );
+  }
+
+  addCart(bookId:any){
+    if(this.userServices.isLoggedIn){
+      let data = {'bookId':bookId};
+      this.cartServices.addBookToCart(data).subscribe(
+        data=>console.log(data),
+        e=>console.log(e),
+        ()=>{}
+      )
+    }else{
+      this.toastr.error('Please Login to add to cart');
+    }
   }
 }

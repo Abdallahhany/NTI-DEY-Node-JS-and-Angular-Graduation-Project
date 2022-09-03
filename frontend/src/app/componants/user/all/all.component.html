@@ -1,19 +1,19 @@
 <div class="row g-5 position-relative">
   <div class="col-4" *ngFor="let user of users">
     <div class="card h-100 p-3">
-      <h3>{{user._id}}</h3>
+      <h2>{{user._id}}</h2>
       <div class="row my-3 text-center">
         <div>
-          <h6>Name: {{user.userName}}</h6>
+          <h4>Name: {{user.userName}}</h4>
         </div>
         <div>
-          <h6>Email: {{user.email}}</h6>
+          <h4>Email: {{user.email}}</h4>
         </div>
         <div>
-          <h6>Role: {{user.role}}</h6>
+          <h4>Role: {{user.role}}</h4>
         </div>
         <div>
-          <h6>Actions:</h6>
+          <h4>Actions:</h4>
           <div class="btn-group m-3">
             <button type="button" class="btn btn-primary" routerLink = "/users/edit/{{user._id}}">
               Edit</button>

@@ -11,6 +11,7 @@ import { EditComponent } from './componants/user/edit/edit.component';
 import { LoginComponent } from './componants/user/login/login.component';
 import { ProfileComponent } from './componants/user/profile/profile.component';
 import { RegisterComponent } from './componants/user/register/register.component';
+import { AdminGuard } from './core/guards/admin.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,8 +29,8 @@ const routes: Routes = [
     path: 'books',
     children: [
       { path: 'single/:bookId', component: SingleComponent },
-      { path: 'add', component: AddBookComponent },
-      { path: 'update/:bookId', component: UpdateBookComponent },
+      { path: 'add', component: AddBookComponent,canActivate:[AdminGuard] },
+      { path: 'update/:bookId', component: UpdateBookComponent,canActivate:[AdminGuard] },
     ],
   },
   {

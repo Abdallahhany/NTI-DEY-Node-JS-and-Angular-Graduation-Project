@@ -11,6 +11,7 @@ import { ProfileComponent } from './componants/user/profile/profile.component';
 import { HomeComponent } from './componants/home/home.component';
 import { UserServices } from './core/services/user_services';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 import { ToastrModule } from 'ngx-toastr';
 import { NavComponent } from './componants/shared/nav/nav.component';
@@ -50,6 +51,7 @@ import { ChangePasswordComponent } from './componants/user/change-password/chang
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgbModule,
+    MatIconModule,
   ],
   providers: [
     UserServices,

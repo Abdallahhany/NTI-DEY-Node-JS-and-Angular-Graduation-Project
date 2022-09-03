@@ -18,15 +18,14 @@ class Cart {
   };
   static addToCart = async (req, res) => {
     try {
-      const userId = req.user.id;
-      const bookId = req.params.bookId;
+      //const userId = req.user.id;
+      const bookId = req.body.bookId;
       const book = await bookModel.findById(bookId);
       if (!book) {
         return res.status(400).json({
           message: "There is no book with the given id.",
         });
       }
-      // const cart = await cartModel.findOne({ user: userId });
       // console.log(cart);
       // let bookIds = [];
       // for (let b of cart.books) {
@@ -37,10 +36,17 @@ class Cart {
       //     message: "Book is already in your cart",
       //   });
       // }
-      const cart = new cartModel();
-      cart.userId = req.user._id;
-      cart.books.push(bookId);
-      cart.totalPrice += book.price;
+      let cart = null;
+      cart = await cartModel.findOne({ userId: req.user._id });
+      if(!cart){
+        cart = new cartModel();
+        cart.userId = req.user._id;
+        cart.books.push(bookId);
+        cart.totalPrice += book.price;
+      }else{
+        cart.books.push(bookId);
+        cart.totalPrice += book.price;
+      }
       cart.save();
 
       res.status(200).json({
