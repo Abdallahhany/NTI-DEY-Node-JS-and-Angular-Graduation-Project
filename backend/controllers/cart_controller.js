@@ -7,11 +7,17 @@ class Cart {
   static showCart = async (req, res) => {
     try {
       const userId = req.user._id;
-      const cart = await cartModel.findOne({ userId: userId }).populate("books");
+      const cart = await cartModel
+        .findOne({ userId: userId })
+        .populate("books");
       if (!cart) {
         return res.send({ success: false, msg: "This user has no carts" });
       }
-      res.send({ success: true, books:cart.books, totalPrice:cart.totalPrice });
+      res.send({
+        success: true,
+        books: cart.books,
+        totalPrice: cart.totalPrice,
+      });
     } catch (error) {
       res.send({ success: false, err: error.message });
     }
@@ -38,12 +44,12 @@ class Cart {
       // }
       let cart = null;
       cart = await cartModel.findOne({ userId: req.user._id });
-      if(!cart){
+      if (!cart) {
         cart = new cartModel();
         cart.userId = req.user._id;
         cart.books.push(bookId);
         cart.totalPrice += book.price;
-      }else{
+      } else {
         cart.books.push(bookId);
         cart.totalPrice += book.price;
       }
@@ -66,22 +72,22 @@ class Cart {
       const book = await bookModel.findById(bookId);
       if (!book) {
         return res.status(400).json({
-          message: "There is no book with the given id.",
+          success: false,
+          msg: "There is no book with the given id.",
         });
       }
       const cart = await cartModel.findOne({ user: userId });
-      cart.books = cart.books
-        .map((b) => b.toString())
-        .filter((b) => b !== bookId);
+      cart.books = cart.books.map((b) => b).filter((b) => b._id != bookId);
       cart.totalPrice -= book.price;
       cart.save();
+      console.log(cart);
       res.status(200).json({
         success: true,
         msg: "Book removed from cart!",
         data: cart,
       });
     } catch (error) {
-      res.send({ success: false, err: error.message });
+      res.send({ success: false, msg: error.message });
     }
   };
   static checkout = async (req, res) => {
@@ -118,7 +124,7 @@ class Cart {
         data: receipt,
       });
     } catch (error) {
-      res.send({ success: false, err: error.message });
+      res.send({ success: false, msg: error.message });
     }
   };
 }

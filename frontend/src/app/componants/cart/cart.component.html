@@ -10,7 +10,11 @@
                   <h3>Price {{book?.price}} EGP</h3>
             </div>
             </div>
+            <button id="checkout_btn" class="btn btn-danger btn-block m-3" (click)="deleteCart(book._id)">Delete Cart
+            </button>
         </div>
+        
     </div>
     <h2 class="ms-auto">Total Price {{totalPrice}} EGP</h2>
+    
 </div>
