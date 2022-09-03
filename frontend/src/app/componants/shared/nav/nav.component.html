@@ -33,7 +33,7 @@
           ariaCurrentWhenActive="page" (click)="handelLogOut()">Logout</button>
         </li>
         <li class="nav-item ms-auto">
-          <a class="nav-link" *ngIf="userServices.isLoggedIn"  routerLink="/users/all" [routerLinkActive]="'active'"
+          <a class="nav-link" *ngIf="userServices.isLoggedIn"  routerLink="/cart" [routerLinkActive]="'active'"
             [routerLinkActiveOptions]="{exact:true}">
             <mat-icon class="fs-2 w-100 h-100">shopping_cart</mat-icon></a>
         </li>

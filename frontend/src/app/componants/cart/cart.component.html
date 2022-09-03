@@ -1,0 +1,16 @@
+<div class="card h-100 m-auto p-5">
+    <div class="row h-100">
+        <div class="col-12 mb-3" *ngFor="let book of cartBooks">
+            <div class="row">
+            <div class="col-2">
+                <img class="img-fluid h-100 w-100" src="{{urlImage}}{{book?.image}}" alt="book-image">
+            </div>
+            <div class="col-4 position-relative">
+                  <h2>{{book?.title}}</h2>
+                  <h3>Price {{book?.price}} EGP</h3>
+            </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="ms-auto">Total Price {{totalPrice}} EGP</h2>
+</div>

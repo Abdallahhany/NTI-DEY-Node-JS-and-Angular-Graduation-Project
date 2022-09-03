@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
     if(this.userServices.isLoggedIn){
       let data = {'bookId':bookId};
       this.cartServices.addBookToCart(data).subscribe(
-        data=>console.log(data),
+        data=>this.toastr.success('Book added to cart'),
         e=>console.log(e),
         ()=>{}
       )

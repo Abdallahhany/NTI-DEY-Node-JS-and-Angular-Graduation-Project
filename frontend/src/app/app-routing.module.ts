@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddBookComponent } from './componants/books/add-book/add-book.component';
 import { SingleComponent } from './componants/books/single/single.component';
 import { UpdateBookComponent } from './componants/books/update-book/update-book.component';
+import { CartComponent } from './componants/cart/cart.component';
 import { HomeComponent } from './componants/home/home.component';
 import { AllComponent } from './componants/user/all/all.component';
 import { ChangePasswordComponent } from './componants/user/change-password/change-password.component';
@@ -12,6 +13,7 @@ import { LoginComponent } from './componants/user/login/login.component';
 import { ProfileComponent } from './componants/user/profile/profile.component';
 import { RegisterComponent } from './componants/user/register/register.component';
 import { AdminGuard } from './core/guards/admin.guard';
+import { UserGuard } from './core/guards/user.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -40,6 +42,7 @@ const routes: Routes = [
       { path: 'edit/:userId', component: EditComponent },
     ],
   },
+  { path:'cart', component: CartComponent, canActivate:[UserGuard]}
 ];
 
 @NgModule({

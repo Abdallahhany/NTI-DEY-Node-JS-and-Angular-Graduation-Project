@@ -14,4 +14,8 @@ export class CartServices {
   addBookToCart(data:any):Observable<any>{
     return this.http.post(`${this.baseUrl}/add`,data);
   }
+
+  getCartBooks():Observable<any>{
+    return this.http.get(`${this.baseUrl}/show`);
+  }
 }

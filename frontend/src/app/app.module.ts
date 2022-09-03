@@ -23,6 +23,7 @@ import { AllComponent } from './componants/user/all/all.component';
 import { EditComponent } from './componants/user/edit/edit.component';
 import { EditProfileComponent } from './componants/user/edit-profile/edit-profile.component';
 import { ChangePasswordComponent } from './componants/user/change-password/change-password.component';
+import { CartComponent } from './componants/cart/cart.component';
 
 
 
@@ -41,6 +42,7 @@ import { ChangePasswordComponent } from './componants/user/change-password/chang
     EditComponent,
     EditProfileComponent,
     ChangePasswordComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

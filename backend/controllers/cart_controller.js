@@ -7,11 +7,11 @@ class Cart {
   static showCart = async (req, res) => {
     try {
       const userId = req.user._id;
-      const cart = await cartModel.findOne({ user: userId }).populate("books");
+      const cart = await cartModel.findOne({ userId: userId }).populate("books");
       if (!cart) {
         return res.send({ success: false, msg: "This user has no carts" });
       }
-      res.send({ success: true, cart });
+      res.send({ success: true, books:cart.books, totalPrice:cart.totalPrice });
     } catch (error) {
       res.send({ success: false, err: error.message });
     }
